@@ -1,40 +1,62 @@
 #include <stdio.h>
 
+void MoverTorre(int casasT) {
+    if (casasT > 0) {
+        printf("Direita\n", MoverTorre);
+        MoverTorre(casasT - 1);}
+}
+
+void MoverBispo(int casasB) {
+    if (casasB > 0) {
+        printf("Cima,Direita\n", MoverBispo);
+        MoverBispo(casasB - 1);}
+}
+
+void MoverRainha(int casasR) {
+    if (casasR > 0) {
+        printf("Esquerda\n", MoverRainha);
+        MoverRainha(casasR - 1);}
+}
+
 int main (){
-    int T = 1, R = 1, B = 1, C1 = 1, C2 = 1;// 'T'orre, 'R'ainha, 'B'ispo, 'C'avalo
+    int C1=1, C2=1;
     
     printf("-----------------------------\n");
     printf("-----Movimento da Torre------\n");
-    do { 
-        printf("Direita\n", T);//Simulando o movimento da Torre 5x para a Direita
-        T++; }//Utilizei o Do While
-    while (T <= 5);
-    
+        MoverTorre(5);
+    //---------------------------------------------------------------//
     printf("-----------------------------\n");
-
     printf("-----Movimento da Bispo------\n");
-    while (B <= 5) {
-        printf("Cima,Direita\n", T);//Simulando o movimento do Bispo 5x para a Cima-Direita(Diagonal)
-        B++; }//Utilizei o While
+    printf("----------Recursivo----------\n");
 
+        MoverBispo(5);
+    //---------------------------------------------------------------//
     printf("-----------------------------\n");
+    printf("-----Movimento da Bispo------\n");
+    printf("--------Loop Aninhado--------\n");
 
-    printf("-----Movimento da Rainha-----\n");
-    for ( R; R <= 8; R++){
-        printf("Esquerda\n", R); }//Simulando o movimento da Rainha 8x para a Esquerda
-        //Utilizei o For
-   
-    printf("-----------------------------\n");
-
-    printf("-----Movimento do Cavalo-----\n");
-    for (C1; C1 <= 2; C1++) {
-        printf("Baixo\n", C1);
+    for (int B1 = 1; B1 <= 5; B1++) {
+        
+        for (int B2 = 1; B2 <= 1; B2++) {
+            
+            printf("Direita,", B1);
+        }
+        printf("Cima\n", B1);
     }
-    while (C2 <= 1) {
-        printf("Esquerda\n", C2);
-        C2++;
-    }   //Utilizei o For e o While
-    //Simulando o movimento do Cavalo 2x para Baixo e 1x para a Esquerda (Movimento em L)
-    
+    //---------------------------------------------------------------//
+    printf("-----------------------------\n"); 
+    printf("-----Movimento da Rainha-----\n");
+        MoverRainha(8);
+    //---------------------------------------------------------------//
+    printf("-----------------------------\n");
+    printf("-----Movimento do Cavalo-----\n");
+    for (int C1 = 1; C1 <= 1; C1++) { 
+        for (int C2 = 1; C2 <= 2; C2++) { 
+                
+            printf("Cima\n", C2);
+        }
+        printf("Direita\n", C1);
+    }
+
 return 0;
-}
+}   
